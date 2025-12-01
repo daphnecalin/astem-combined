@@ -478,7 +478,6 @@ const Filebar: React.FC<FilebarProps> = ({
 						console.log("File selection cancelled");
 						return;
 					}
-					console.log(e.currentTarget.files);
 					console.log("Files selected:", e.currentTarget.files);
 					handleFilesSelected(e.currentTarget.files);
 					e.currentTarget.value = "";
