@@ -1,6 +1,9 @@
 {
   "file": "File",
   "open": "Open",
+  "save" : "Save",
+  "cancel" : "Cancel",
+  "confirmClearMessage": "Are you sure you want to clear all files?",
   "openFolder": "Open Folder",
   "closeFile": "Close Current File",
   "clearFiles": "Clear All Files",

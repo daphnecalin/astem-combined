@@ -235,7 +235,11 @@ const Filebar: React.FC<FilebarProps> = ({
 						</Menubar.Item>
 						<Menubar.Item
 							className='MenubarItem'
-							onClick={clearAllFiles}
+							    onClick={() => {
+									if (window.confirm(t("confirmClearMessage") || "Are you sure you want to clear all files?")) {
+										clearAllFiles();
+									}
+								}}
 						>
 							{t("clearFiles")}
 						</Menubar.Item>
@@ -427,10 +431,10 @@ const Filebar: React.FC<FilebarProps> = ({
 						</div>
 						<div className='DialogActions'>
 							<Dialog.Close asChild>
-								<button className='Button green' onClick={handleSaveClasses}>Save</button>
+								<button className='Button green' onClick={handleSaveClasses}>{t("save")}</button>
 							</Dialog.Close>
 							<Dialog.Close asChild>
-								<button className='Button gray' onClick={handleCancelClasses}>Cancel</button>
+								<button className='Button gray' onClick={handleCancelClasses}>{t("cancel")}</button>
 							</Dialog.Close>
 						</div>
 

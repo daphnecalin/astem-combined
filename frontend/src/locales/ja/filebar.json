@@ -1,6 +1,9 @@
 ﻿{
   "file": "ファイル",
   "open": "開く",
+  "save" : "保存",
+  "cancel" : "キャンセル",
+  "confirmClearMessage": "本当にすべてのファイルをクリアしますか。",
   "openFolder": "フォルダを開く",
   "closeFile": "現在のファイルを閉じる",
   "clearFiles": "すべてのファイルをクリア",
