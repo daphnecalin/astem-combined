@@ -24,7 +24,7 @@ RUN npm run build
 #### PRODUCTION ENVIRONMENT ####
 ################################
 
-FROM nginx:stable-alpine as production
+FROM docker.io/nginx:stable-alpine as production
 
 # copy nginx configuration in side conf.d folder
 COPY --from=build /usr/src/app/nginx /etc/nginx/conf.d

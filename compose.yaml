@@ -1,7 +1,7 @@
 services:
   tilearchive:
-    image: ethanmitchell9/mariadb:latest # Added docker server (changing this to allow push to my account ethanmitchell9)
-    #container_name: tilearchive-container
+    image: docker.io/mariadb:latest
+#    container_name: tilearchive-container
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -15,10 +15,10 @@ services:
     networks:
       - ceramnote
 
-  ceramnote:
-    build: ./frontend # changed to frontend; added build command
-    image: ethanmitchell9/ceramnote:latest
-    #container_name: ceramnote-container
+  ceramnote-frontend:
+    build: ./frontend
+#    image: localhost/cacticouncil/ceramnote_frontend:latest
+#    container_name: ceramnote-frontend
     ports:
       - "80:80"
     depends_on:
@@ -31,20 +31,22 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./data:/data
-    networks: # Added
-      - ceramnote # Added
+    networks:
+      - ceramnote
 
   backend:
-    build: ./backend # changed to backend
+    build: ./backend
+    image: localhost/cacticouncil/ceramnote_backend:latest
     image: ethanmitchell9/backend:latest
+    container_name: ceramnote-backend
     ports:
       - "8000:8000"
     volumes:
       - ./data:/data
     depends_on:
       - tilearchive
-    networks: # Added
-      - ceramnote #added
+    networks:
+      - ceramnote
 
 volumes:
   tile-volume:
