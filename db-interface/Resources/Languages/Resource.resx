@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GalzeSearch" xml:space="preserve">
-    <value>釉薬検索</value>
+  <data name="FilterBySpectrum" xml:space="preserve">
+    <value>Filter by Spectrum</value>
+  </data>
+  <data name="GlazeSearch" xml:space="preserve">
+    <value>Glaze Search</value>
+  </data>
+  <data name="FilterByString" xml:space="preserve">
+    <value>Filter by Name</value>
+  </data>
+  <data name="DoNotFilterByColor" xml:space="preserve">
+    <value>Don't Filter by Color</value>
+  </data>
+  <data name="GlazeType" xml:space="preserve">
+    <value>Glaze Type</value>
+  </data>
+  <data name="SurfaceCondition" xml:space="preserve">
+    <value>Surface Condition</value>
+  </data>
+  <data name="ColorName" xml:space="preserve">
+    <value>Color Name</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="NoGlazesFound" xml:space="preserve">
+    <value>No Glazes Found</value>
+  </data>
+  <data name="FiringAtmosphere" xml:space="preserve">
+    <value>Firing Atmosphere</value>
+  </data>
+  <data name="SwitchLanguage" xml:space="preserve">
+    <value>Switch Language</value>
   </data>
 </root>
