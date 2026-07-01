@@ -72,7 +72,16 @@ namespace ASTEM_DB.ViewModels
             {
                 this.RaiseAndSetIfChanged(ref _selectedCard, value);
                 IsSidebarVisible = value != null;
+                if (value != null && value.BoardImage == null)
+                {
+                    _ = LoadBoardImageAsync(value);
+                }
             }
+        }
+
+        private async Task LoadBoardImageAsync(CardItemViewModel card)
+        {
+            card.BoardImage = await _db.GetBoardImageByIdAsync(card.BoardID);
         }
 
         private bool _sortByNameChecked;
@@ -191,7 +200,7 @@ namespace ASTEM_DB.ViewModels
 
         public void SwitchLanguage()
         {
-            
+
         }
 
         private bool _isFilterEmpty;

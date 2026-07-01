@@ -2,7 +2,7 @@
     x:Class="ASTEM_DB.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:color="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.ColorPicker"
+    xmlns:color="clr-namespace:Avalonia.Controls.Primitives;assembly=Avalonia.Controls.ColorPicker"
 	xmlns:lang="clr-namespace:ASTEM_DB.Resources.Languages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -35,19 +35,39 @@
                     Header="{x:Static lang:Resource.GlazeSearch}">
                     <ScrollViewer Margin="0,30,0,0" VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="10" Spacing="5">
-                            <color:ColorView
-                                Margin="0,-10,0,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                IsAlphaVisible="False"
-                                IsColorComponentsVisible="False"
-                                IsColorModelVisible="False"
-                                IsColorPaletteVisible="False"
-                                IsColorPreviewVisible="True"
-                                IsColorSpectrumVisible="True"
-                                IsComponentSliderVisible="False"
-                                Color="{Binding SelectedColor, Mode=TwoWay}" />
+                            <Grid
+							  IsVisible="{Binding FilterBySpectrum}"
+                              Margin="0,-10,0,0"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              ColumnDefinitions="24,256">
 
+                                <color:ColorSlider x:Name="HueSlider"
+                                    Grid.Column="0"
+                                    Width="24"
+                                    VerticalAlignment="Stretch"
+                                    Orientation="Vertical"
+                                    ColorModel="Hsva"
+                                    ColorComponent="Component1"
+                                    IsAlphaVisible="False"
+                                    HsvColor="{Binding #Spectrum.HsvColor, Mode=TwoWay}" />
+
+                                <color:ColorSpectrum x:Name="Spectrum"
+                                    Grid.Column="1"
+                                    Width="256"
+                                    Height="256"
+                                    Components="SaturationValue"
+                                    Color="{Binding SelectedColor, Mode=TwoWay}" />
+                            </Grid>
+							<color:ColorPreviewer x:Name="Previewer"
+								IsVisible="{Binding FilterBySpectrum}"
+                                Grid.Column="1"
+                                Width="280"
+                                Height="16"
+								IsAccentColorsVisible="False"
+                                HsvColor="{Binding #Spectrum.HsvColor, Mode=TwoWay}" />
+							
+                           
                             <RadioButton
                                 Content="{x:Static lang:Resource.FilterBySpectrum}"
                                 GroupName="ColorMode"
@@ -85,12 +105,6 @@
                     </ScrollViewer>
                 </TabItem>
             </TabControl>
-				<Button
-                    Content="{x:Static lang:Resource.SwitchLanguage}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Margin="0,22,14,0" 
-					Command="{Binding SwitchLanguage}"/>
 			</Grid>
         </Border>
 
@@ -160,6 +174,13 @@
                         Width="130"
                         Height="130"
                         Source="{Binding SelectedCard.Image}" />
+                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center">
+                        <Run FontWeight="DemiBold" TextDecorations="Underline" Text="Original Tileboard"  />
+                    </TextBlock>
+                    <Image
+                        Width="130"
+                        Height="130"
+                        Source="{Binding SelectedCard.BoardImage}" />
                     <TextBlock HorizontalAlignment="Center" TextAlignment="Center">
                         <Run FontWeight="DemiBold" TextDecorations="Underline" Text="Glaze Type"  />
                     </TextBlock>

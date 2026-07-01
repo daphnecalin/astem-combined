@@ -36,8 +36,8 @@ services:
 
   backend:
     build: ./backend
-    image: localhost/cacticouncil/ceramnote_backend:latest
-    image: ethanmitchell9/backend:latest
+    #image: localhost/cacticouncil/ceramnote_backend:latest
+    #image: ethanmitchell9/backend:latest
     container_name: ceramnote-backend
     ports:
       - "8000:8000"
